@@ -23,38 +23,50 @@ if (!is_array($user)) {
 ?>
 <!doctype html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Edição de Usuário</title>
-    </head>
-    <body>
-        <h1>Sistema de Cadastro</h1>
-        <h2>Edição de Usuário</h2>
-        <form action="edit.php" method="post">
-            <label for="name">Nome: </label>
-            <br>
-            <input type="text" name="name" id="name" value="<?=$user['name']?>">
-            <br><br>
-            <label for="email">Email: </label>
-            <br>
-            <input type="text" name="email" id="email" value="<?=$user['email'] ?>">
-            <br><br>
-            Gênero:
-            <br>
-            <input type="radio" name="gender" id="gender_m" value="m" <?php if ($user['gender'] == 'm'): ?> 
-                   checked="checked" <?php endif; ?>>
-            <label for="gener_m">Masculino </label>
-            <input type="radio" name="gender" id="gender_f" value="f" <?php if ($user['gender'] == 'f'): ?> 
-                   checked="checked" <?php endif; ?>>
-            <label for="gener_f">Feminino </label>
-            <br><br>
-            <label for="birthdate">Data de Nascimento: </label>
-            <br>
-            <input type="text" name="birthdate" id="birthdate" placeholder="dd/mm/YYYY" 
-                   value="<?php echo dateConvert($user['birthdate']) ?>">
-            <br><br>
-            <input type="hidden" name="id" value="<?=$id?>">
-            <input type="submit" value="Alterar">
-        </form>
-    </body>
+
+<head>
+    <meta charset="utf-8">
+    <title>Edição de Usuário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="row align-items-md-stretch">
+        <div class="h-100 p-5 text-bg-dark">
+            <h1>Sistema de Cadastro</h1>
+            <h2>Edição de Usuário</h2>
+        </div>
+    </div>
+    <div class="row p-3">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <form class="form-control" action="edit.php" method="post">
+                <label class="form-label" for="name">Nome: </label>
+
+                <input class="form-control" type="text" name="name" id="name" value="<?= $user['name'] ?>">
+                <label class="form-label" for="email">Email: </label>
+                <input class="form-control" type="text" name="email" id="email" value="<?= $user['email'] ?>">
+                Gênero:<br>
+                <div class="form-control">
+                    <input type="radio" name="gender" id="gender_m" value="m" <?php if ($user['gender'] == 'm') : ?> checked="checked" <?php endif; ?>>
+                    <label class="form-label" for="gener_m">Masculino </label>
+                    <input type="radio" name="gender" id="gender_f" value="f" <?php if ($user['gender'] == 'f') : ?> checked="checked" <?php endif; ?>>
+                    <label class="form-label" for="gener_f">Feminino </label><br>
+                </div>
+
+                <label class="form-label" for="birthdate">Data de Nascimento: </label>
+                <input class="form-control" type="text" name="birthdate" id="birthdate" placeholder="dd/mm/YYYY" value="<?php echo dateConvert($user['birthdate']) ?>">
+                <input class="form-control" type="hidden" name="id" value="<?= $id ?>">
+                <br>
+                <input class="btn btn-primary" type="submit" value="Alterar">
+            </form>
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+    <footer class="p-3 text-bg-dark fixed-bottom text-center">
+        Desenvolvido por Maromo&#174;
+    </footer>
+</body>
+
 </html>
